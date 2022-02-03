@@ -1,0 +1,20 @@
+# Location: 
+C:\kafka\kafka_2.12-2.8.1\bin\windows
+
+# Zookeeper Server
+zookeeper-server-start.bat ../../config/zookeeper.Properties
+
+# Kafka Server
+kafka-server-start.bat ../../config/server.Properties
+
+# Create Topic
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 -topic genericTopic
+
+# List down all available topics
+kafka-topics.bat --list --zookeeper localhost:2181
+
+# Produce a message
+kafka-console-producer.bat --broker-list localhost:9092 --topic genericTopic
+
+# Consume a message
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic genericTopic
