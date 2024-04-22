@@ -9,11 +9,14 @@
 # Components
 > Event
 - An activity which has happened 
+- It is immutable
 - Naming Convention
 <Noun><Action>Event --> ProductCreatedEvent
 
 > Message vs Event
 - Message is an envelope which contains an event in it which can be different formats [Json, String, Avro or Null]
+- It can be in key value pair
+- It contains key, value, timestamps, Headers [Optional]
 
 > Producer
 - The one who publishes the event to kafka broker
@@ -25,9 +28,22 @@
 
 > Topics
 - It is under kafka broker which stores the events produced to a specific topic and save it in partition
-- Topic is nothing but list of partiotions in which event is stored
+- It is nothing but list of partiotions in which event is stored
+- It is append only, new event is always added at the end 
+- Its retention time is 7 days
+- It provides support for parallel processing and load balancing
+
+> Partition
+- It is small storage unit which stores the data
+- Events are in order within the partition. Order across partition is not maintained
 
 > Consumer
 - The one who consumes an event from kafka broker
 
-Note: Queue is similiar to kafka topic but difference is event is not deleted once consumed. it stays on memory till cleaning process in not scheduled 
+# Ordering
+- In case of message key is absent, the data can be stored in any of the partition. order is not followed and may raise conflicts
+- In case of message key is provided, the data is always stored in 'single partition'
+
+Note: 
+- Queue is similiar to kafka topic but difference is event is not deleted once consumed. it stays on memory till cleaning process in not scheduled 
+- Partitions can be increased even after configured but it cannot be decreased
