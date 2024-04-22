@@ -1,0 +1,33 @@
+# Kafka Notes
+
+- Kafka is used for asyncronous communication
+- Majorly used for distributing messages across multiple other microservices
+- Follows even-driven architecture
+- It is publisher-subscriber model [pubsub model]
+- It is useful in scaling
+
+# Components
+> Event
+- An activity which has happened 
+- Naming Convention
+<Noun><Action>Event --> ProductCreatedEvent
+
+> Message vs Event
+- Message is an envelope which contains an event in it which can be different formats [Json, String, Avro or Null]
+
+> Producer
+- The one who publishes the event to kafka broker
+
+> Kafka Broker
+- Server which accepts events from producer & stores in its hard disk
+- It manages Kafka topics, handles the storage of data into topic partitions, 
+  manages replication of data for fault tolerance, and serves client requests (from both Producers and Consumers).
+
+> Topics
+- It is under kafka broker which stores the events produced to a specific topic and save it in partition
+- Topic is nothing but list of partiotions in which event is stored
+
+> Consumer
+- The one who consumes an event from kafka broker
+
+Note: Queue is similiar to kafka topic but difference is event is not deleted once consumed. it stays on memory till cleaning process in not scheduled 
