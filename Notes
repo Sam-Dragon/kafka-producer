@@ -22,6 +22,7 @@
 - The one who publishes the event to kafka broker
 
 > Kafka Broker
+- It can be physical computer or virtual machine which runs kafka processes.
 - Server which accepts events from producer & stores in its hard disk
 - It manages Kafka topics, handles the storage of data into topic partitions, 
   manages replication of data for fault tolerance, and serves client requests (from both Producers and Consumers).
@@ -43,6 +44,13 @@
 # Ordering
 - In case of message key is absent, the data can be stored in any of the partition. order is not followed and may raise conflicts
 - In case of message key is provided, the data is always stored in 'single partition'
+
+# Architecture
+- Generally, we need more than broker. It works on leader-follwer server. 
+- In case leader goes down, then one of the follower becomes leader and continue to work
+- leader replicates the data into follower servers
+- Every kafka broker can be leader and follower at same time.
+- Each partition is assigned to a broker when topic is created/modified
 
 Note: 
 - Queue is similiar to kafka topic but difference is event is not deleted once consumed. it stays on memory till cleaning process in not scheduled 
