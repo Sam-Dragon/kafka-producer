@@ -1,5 +1,5 @@
 # Location: 
-C:\kafka\kafka_2.12-2.8.1\bin\windows
+C:\kafka\bin\windows
 
 # Zookeeper Server
 zookeeper-server-start.bat ../../config/zookeeper.Properties
