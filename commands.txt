@@ -2,10 +2,10 @@
 C:\kafka\bin\windows
 
 # Zookeeper Server
-zookeeper-server-start.bat ../../config/zookeeper.Properties
+zookeeper-server-start.bat ../../config/zookeeper.properties
 
 # Kafka Server
-kafka-server-start.bat ../../config/server.Properties
+kafka-server-start.bat ../../config/server.properties
 
 # Create Topic
 kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 -topic genericTopic
