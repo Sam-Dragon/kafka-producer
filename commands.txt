@@ -43,7 +43,14 @@ kafka-server-stop.bat
 kafka-topics.bat --create --topic <TOPIC-NAME> --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
 
 # List down all available topics
+- multiple kafka broker can be provided with comma seperated
 kafka-topics.bat --list --bootstrap-server localhost:9092
+
+# Describe topics
+kafka-topics.bat --describe --bootstrap-server localhost:9092
+
+# Delete topics
+kafka-topics.bat --delete --topic <TOPIC-NAME> --bootstrap-server localhost:9092
 
 # Produce a message
 kafka-console-producer.bat --broker-list localhost:9092 --topic my-topic
