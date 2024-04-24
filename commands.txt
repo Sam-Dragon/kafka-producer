@@ -35,7 +35,7 @@ zookeeper-server-start.bat ../../config/zookeeper.properties
 kafka-server-start.bat ../../config/server.properties
 
 > Stop
-- To enable manual shutdown [controlled.shutdown.enabled=true]
+- To enable manual shutdown [controlled.shutdown.enable=true]
 kafka-server-stop.bat
 
 # Create Topic
@@ -48,8 +48,10 @@ kafka-topics.bat --list --bootstrap-server localhost:9092
 
 # Describe topics
 kafka-topics.bat --describe --bootstrap-server localhost:9092
+kafka-topics.bat --describe --topic <TOPIC-NAME> --bootstrap-server localhost:9092
 
 # Delete topics
+- To enable manual delete [delete.topic.enable=true]
 kafka-topics.bat --delete --topic <TOPIC-NAME> --bootstrap-server localhost:9092
 
 # Produce a message
