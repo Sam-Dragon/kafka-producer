@@ -14,6 +14,12 @@ kafka-storage.bat format -t <ID> -c ../../config/kraft/server.properties
 kafka-server-start.bat ../../config/kraft/server.properties
 
 -- Multiple servers
+kafka-storage.bat random-uuid
+<ID>
+
+kafka-storage.bat format -t <ID> -c ../../config/kraft/server-1.properties
+kafka-storage.bat format -t <ID> -c ../../config/kraft/server-2.properties
+
 kafka-server-start.bat ../../config/kraft/server-1.properties
 kafka-server-start.bat ../../config/kraft/server-2.properties
 
@@ -25,10 +31,16 @@ kafka-server-start.bat ../../config/kraft/server-2.properties
 zookeeper-server-start.bat ../../config/zookeeper.properties
 
 # Kafka Server
+> Start
 kafka-server-start.bat ../../config/server.properties
 
+> Stop
+- To enable manual shutdown [controlled.shutdown.enabled=true]
+kafka-server-stop.bat
+
 # Create Topic
-kafka-topics.bat --create --topic my-topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
+- It create topic on specific kafka broker server [--bootstrap-server localhost:9092] but u can provide multiple with comma seperated
+kafka-topics.bat --create --topic <TOPIC-NAME> --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
 
 # List down all available topics
 kafka-topics.bat --list --bootstrap-server localhost:9092
