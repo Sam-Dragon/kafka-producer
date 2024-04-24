@@ -13,6 +13,10 @@ kafka-storage.bat format -t <ID> -c ../../config/kraft/server.properties
 # Kafka Server
 kafka-server-start.bat ../../config/kraft/server.properties
 
+-- Multiple servers
+kafka-server-start.bat ../../config/kraft/server-1.properties
+kafka-server-start.bat ../../config/kraft/server-2.properties
+
 -- NOT WORKING WITH KRAFT MODE
 
 
