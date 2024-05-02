@@ -31,6 +31,7 @@ kafka-topics.bat --delete --topic <TOPIC-NAME> --bootstrap-server localhost:9092
 
 # Produce a message
 kafka-console-producer.bat --broker-list localhost:9092 --topic <TOPIC-NAME>
+kafka-console-producer.bat --broker-list localhost:9092 --topic <TOPIC-NAME> --property "parse.key=true" --property="key.seperator=:"
 
 # Consume a message
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning
