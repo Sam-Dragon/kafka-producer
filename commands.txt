@@ -34,6 +34,7 @@ kafka-console-producer.bat --broker-list localhost:9092 --topic <TOPIC-NAME>
 kafka-console-producer.bat --broker-list localhost:9092 --topic <TOPIC-NAME> --property "parse.key=true" --property "key.separator=:"
 
 # Consume a message
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME>
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning --property "key.separator=:" --property "print.key=true"
 
