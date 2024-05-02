@@ -37,6 +37,7 @@ kafka-console-producer.bat --broker-list localhost:9092 --topic <TOPIC-NAME> --p
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME>
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning --property "key.separator=:" --property "print.key=true"
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning --property "key.separator=:" --property "print.value=true"
 
 -- NEW WAY [NOT WORKING]
 # Kafka Cluster
