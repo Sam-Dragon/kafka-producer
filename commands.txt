@@ -1,31 +1,6 @@
 # Location: 
 C:\kafka_2.13-3.5.0\bin\windows
 
--- NEW WAY
-# Kafka Cluster
-- It generates id for the kafka cluster
-kafka-storage.bat random-uuid
-<ID>
-
-- use the id generated above and format it
-kafka-storage.bat format -t <ID> -c ../../config/kraft/server.properties
-
-# Kafka Server
-kafka-server-start.bat ../../config/kraft/server.properties
-
--- Multiple servers
-kafka-storage.bat random-uuid
-<ID>
-
-kafka-storage.bat format -t <ID> -c ../../config/kraft/server-1.properties
-kafka-storage.bat format -t <ID> -c ../../config/kraft/server-2.properties
-
-kafka-server-start.bat ../../config/kraft/server-1.properties
-kafka-server-start.bat ../../config/kraft/server-2.properties
-
--- NOT WORKING WITH KRAFT MODE
-
-
 -- OLD WAY
 # Zookeeper Server
 zookeeper-server-start.bat ../../config/zookeeper.properties
@@ -55,8 +30,32 @@ kafka-topics.bat --describe --topic <TOPIC-NAME> --bootstrap-server localhost:90
 kafka-topics.bat --delete --topic <TOPIC-NAME> --bootstrap-server localhost:9092
 
 # Produce a message
-kafka-console-producer.bat --broker-list localhost:9092 --topic my-topic
+kafka-console-producer.bat --broker-list localhost:9092 --topic <TOPIC-NAME>
 
 # Consume a message
-kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-topic --from-beginning
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning
 
+
+-- NEW WAY [NOT WORKING]
+# Kafka Cluster
+- It generates id for the kafka cluster
+kafka-storage.bat random-uuid
+<ID>
+
+- use the id generated above and format it
+kafka-storage.bat format -t <ID> -c ../../config/kraft/server.properties
+
+# Kafka Server
+kafka-server-start.bat ../../config/kraft/server.properties
+
+-- Multiple servers
+kafka-storage.bat random-uuid
+<ID>
+
+kafka-storage.bat format -t <ID> -c ../../config/kraft/server-1.properties
+kafka-storage.bat format -t <ID> -c ../../config/kraft/server-2.properties
+
+kafka-server-start.bat ../../config/kraft/server-1.properties
+kafka-server-start.bat ../../config/kraft/server-2.properties
+
+-- NOT WORKING WITH KRAFT MODE
