@@ -17,6 +17,9 @@ kafka-server-stop.bat
 - It create topic on specific kafka broker server [--bootstrap-server localhost:9092] but u can provide multiple with comma seperated
 kafka-topics.bat --create --topic <TOPIC-NAME> --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3
 
+# Alter Topic config
+kafka-config.bat --bootstrap-server localhost:9092 --alter --entity-type topics --entity-name <TOPIC NAME> --add-config min.insync.replicas=2 
+
 # List down all available topics
 - multiple kafka broker can be provided with comma seperated
 kafka-topics.bat --list --bootstrap-server localhost:9092
@@ -38,6 +41,10 @@ kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning --property "key.separator=:" --property "print.key=true"
 kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <TOPIC-NAME> --from-beginning --property "key.separator=:" --property "print.value=true"
+
+
+
+
 
 -- NEW WAY [NOT WORKING]
 # Kafka Cluster
