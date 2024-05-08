@@ -58,6 +58,14 @@
 - Avoid errors
 - To gracefully shutdown kafka services is by calling kafka-server-stop.bat or kafka-server-stop.sh script
 
+# Idempotent
+- Producer:
+  - To prevent duplicate messages in the logs on failure of network and retry
+
 Note: 
 - Queue is similiar to kafka topic but difference is event is not deleted once consumed. it stays on memory till cleaning process in not scheduled 
 - Partitions can be increased even after configured but it cannot be decreased
+
+# Kafka Properties
+- Delivery Timeout = max time for producer to wait for entire send time [Send Request + Acknoledgement + Retry] - It is replacement for kafka retires
+- Request Timeout = max time for producer can wait after single request
