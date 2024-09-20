@@ -20,7 +20,7 @@
 > Message vs Event
 - Message is an envelope which contains an event in it which can be different formats [Json, String, Avro or Null]
 - It can be in key value pair
-- It contains key, value, timestamps, Headers [Optional]
+- It contains key, value, timestamps, [Optional] Headers [Metadata - tokens] 
 
 > Producer
 - The one who publishes the event to kafka broker
