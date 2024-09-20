@@ -20,7 +20,20 @@
 > Message vs Event
 - Message is an envelope which contains an event in it which can be different formats [Json, String, Avro or Null]
 - It can be in key value pair
-- It contains key, value, timestamps, [Optional] Headers [Metadata - tokens] 
+- It contains key, value, timestamps, [Optional] Headers - Metadata, tokens 
+
+> Partition
+- It is small storage unit which stores the data
+- Events are in order within the partition. Order across partition is not maintained
+- Syntax : Partition-Index [It has number of offsets] 
+
+> Topics
+- It is under kafka broker which stores the events produced to a specific topic and save it in partition
+- It is nothing but list of partitions in which event is stored
+- It is append only, new event is always added at the end 
+- Its retention time is 7 days
+- It provides support for parallel processing and load balancing
+- partitions can be increased in topic but doesnt decrease 
 
 > Producer
 - The one who publishes the event to kafka broker
@@ -30,17 +43,6 @@
 - Server which accepts events from producer & stores in its hard disk
 - It manages Kafka topics, handles the storage of data into topic partitions, 
   manages replication of data for fault tolerance, and serves client requests (from both Producers and Consumers).
-
-> Topics
-- It is under kafka broker which stores the events produced to a specific topic and save it in partition
-- It is nothing but list of partiotions in which event is stored
-- It is append only, new event is always added at the end 
-- Its retention time is 7 days
-- It provides support for parallel processing and load balancing
-
-> Partition
-- It is small storage unit which stores the data
-- Events are in order within the partition. Order across partition is not maintained
 
 > Consumer
 - The one who consumes an event from kafka broker
