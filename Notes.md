@@ -1,5 +1,8 @@
 # Kafka Notes
 
+> Definition
+- Distributed event streaming platform that is used for collect, process, store & integrate data at scale
+
 - Kafka is used for asyncronous communication
 - Majorly used for distributing messages across multiple other microservices
 - Follows even-driven architecture
