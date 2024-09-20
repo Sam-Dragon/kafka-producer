@@ -7,6 +7,7 @@
 - It is useful in scaling
 
 # Components
+
 > Event
 - An activity which has happened 
 - It is immutable
