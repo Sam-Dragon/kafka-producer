@@ -21,6 +21,7 @@
   - In case of message key is absent, the data can be stored in any of the partition. order is not followed and may raise conflicts
   - In case of message key is provided, the data is always stored in 'single partition'
 
+
 > Message vs Event
 - Message is an envelope which contains an event in it which can be different formats [Json, String, Avro or Null]
 - It can be in key value pair
