@@ -46,6 +46,7 @@
 - It serializes the data to be sent over the network
 - It must specify topic name where it wants to produces the message to
 - To enable auto creation of topic [auto.create.topics.enable=true]
+- It can produce message in synchornous/asynchornous communication style
 
 > Broker
 - It can be physical computer or virtual machine which runs kafka processes.
