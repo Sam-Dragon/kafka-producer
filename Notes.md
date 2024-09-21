@@ -47,6 +47,7 @@
 - Server which accepts events from producer & stores in its hard disk
 - It manages Kafka topics, handles the storage of data into topic partitions, 
   manages replication of data for fault tolerance, and serves client requests (from both Producers and Consumers).
+- It follows leader-follower mechanism, there is no single broker who will always be leader. Each broker can be leader/follower
 
 > Consumer
 - The one who consumes an event from broker
