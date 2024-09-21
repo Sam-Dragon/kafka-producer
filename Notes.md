@@ -27,7 +27,8 @@
 - It contains key, value, timestamps, [Optional] Headers - Metadata, tokens 
 
 > Partition
-- It is small **storage unit** which stores the data
+- It is small **storage unit** which stores the data.
+- It stores the data in files called logs, logs will be divided into smaller pieces called segments & each segment has size which is configurable
 - Events are in order within the partition. Order across partition is not maintained
 - Syntax : Partition-Index [It has number of offsets] 
 
