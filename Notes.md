@@ -3,7 +3,7 @@
 > Definition
 - Distributed event streaming platform that is used for collect, process, store & integrate data at scale
 - It provides **loose coupling** between client & server applications
-- Kafka is used for **asyncronous** communication
+- Kafka is used for **asynchronous** communication
 - Majorly used for distributing messages across multiple other microservices
 - Follows **even-driven architecture**
 - It is publisher-subscriber model [pubsub model]
@@ -46,7 +46,7 @@
 - It serializes the data to be sent over the network
 - It must specify topic name where it wants to produces the message to
 - To enable auto creation of topic [auto.create.topics.enable=true]
-- It can produce message in synchornous/asynchornous communication style
+- It can produce message in synchronous/asynchronous communication style
 
 > Broker
 - It can be physical computer or virtual machine which runs kafka processes.
