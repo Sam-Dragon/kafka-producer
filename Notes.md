@@ -2,10 +2,10 @@
 
 > Definition
 - Distributed event streaming platform that is used for collect, process, store & integrate data at scale
-
-- Kafka is used for asyncronous communication
+- It provides **loose coupling** between client & server applications
+- Kafka is used for **asyncronous** communication
 - Majorly used for distributing messages across multiple other microservices
-- Follows even-driven architecture
+- Follows **even-driven architecture**
 - It is publisher-subscriber model [pubsub model]
 - It is useful in scaling
 
@@ -18,16 +18,16 @@
 <Noun><Action>Event --> ProductCreatedEvent
 
   > Ordering an event
-  - In case of message key is absent, the data is load balanced & it can be stored in any of the partition. order is not followed and may raise conflicts
-  - In case of message key is provided, the data is always stored in 'single partition'
+  - In case of message key is absent, the data is load balanced & it can be stored in **any of the partition**. order is not followed and may raise conflicts
+  - In case of message key is provided, the data is always stored in '**single partition**'
 
 > Message vs Event
 - Message is an envelope which contains an event in it which can be different formats [Json, String, Avro or Null]
-- It can be in key value pair
+- It can be in **key-value** pair
 - It contains key, value, timestamps, [Optional] Headers - Metadata, tokens 
 
 > Partition
-- It is small storage unit which stores the data
+- It is small **storage unit** which stores the data
 - Events are in order within the partition. Order across partition is not maintained
 - Syntax : Partition-Index [It has number of offsets] 
 
