@@ -42,7 +42,9 @@
 - partitions can be increased in topic but doesnt decrease 
 
 > Producer
-- The one who publishes the event to broker
+- The one who publishes/produces the event to broker
+- It serializes the data to be sent over the network
+- It must specify topic name where it wants to produces the message to
 - To enable auto creation of topic [auto.create.topics.enable=true]
 
 > Broker
