@@ -54,7 +54,7 @@
 
 > Consumer
 - The one who consumes an event from broker
-
+- It can consume new message or all messages from beginning
 
 # Architecture
 - Generally, we need more than broker. It works on leader-follwer server. 
