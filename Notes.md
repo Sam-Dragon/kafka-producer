@@ -43,6 +43,7 @@
 
 > Producer
 - The one who publishes the event to broker
+- To enable auto creation of topic [auto.create.topics.enable=true]
 
 > Broker
 - It can be physical computer or virtual machine which runs kafka processes.
