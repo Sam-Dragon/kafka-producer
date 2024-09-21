@@ -32,7 +32,7 @@
 - Syntax : Partition-Index [It has number of offsets] 
 
 > Topics
-- It is under kafka broker which stores the events produced to a specific topic and save it in partition
+- It is under broker which stores the events produced to a specific topic and save it in partition
 - It is nothing but list of partitions in which event is stored
 - It is append only, new event is always added at the end 
 - Its default retention time is 7 days but it is configurable
@@ -40,16 +40,16 @@
 - partitions can be increased in topic but doesnt decrease 
 
 > Producer
-- The one who publishes the event to kafka broker
+- The one who publishes the event to broker
 
-> Kafka Broker
+> Broker
 - It can be physical computer or virtual machine which runs kafka processes.
 - Server which accepts events from producer & stores in its hard disk
 - It manages Kafka topics, handles the storage of data into topic partitions, 
   manages replication of data for fault tolerance, and serves client requests (from both Producers and Consumers).
 
 > Consumer
-- The one who consumes an event from kafka broker
+- The one who consumes an event from broker
 
 
 # Architecture
