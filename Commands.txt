@@ -37,7 +37,7 @@ kafka-topics.bat --describe --topic <TOPIC-NAME> --bootstrap-server localhost:90
 - To enable manual delete [delete.topic.enable=true]
 kafka-topics.bat --delete --topic <TOPIC-NAME> --bootstrap-server localhost:9092
 
-Note: Delete all the logs in case exception on server startup happends
+Note: Delete all the logs in case exception on server startup happens
 
 # Produce a message
 kafka-console-producer.bat --broker-list localhost:9092 --topic <TOPIC-NAME>
