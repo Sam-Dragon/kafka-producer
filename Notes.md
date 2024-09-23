@@ -74,6 +74,11 @@
     > Request Timeout
     - max time for producer can wait for response after single request
     - producer.properties.request.timeout.ms = 30000
+ 
+    > Idempotent
+    - It is useful in preventing duplicate messages in the presence of failures or retries. It is required in banking applications
+    - enable.idempotence=true, by default it is true
+    - max.in.flight.requests.per.connection <= 5 must be set
 
 > Broker
 - It can be physical computer or virtual machine which runs kafka processes.
