@@ -49,21 +49,10 @@ public class KafkaConfig {
     NewTopic createTopic() {
         return TopicBuilder.name(KafkaConstants.CREATE_PRODUCT_TOPIC)
                 .partitions(3)
-                .replicas(1)
-//                .configs(Map.of("min.insync.replicas", "1"))
+                .replicas(3)
+                .configs(Map.of("min.insync.replicas", "2"))
                 .build();
     }
-
-    @Bean
-    ProducerFactory<String, ProductCreatedEvent> productFactory() {
-        return new DefaultKafkaProducerFactory<>(producerConfigs());
-    }
-
-    @Bean
-    KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate() {
-        return new KafkaTemplate<>(productFactory());
-    }
-
 
     Map<String, Object> producerConfigs() {
         Map<String, Object> config = new HashMap<>();
@@ -81,4 +70,16 @@ public class KafkaConfig {
 
         return config;
     }
+
+    @Bean
+    ProducerFactory<String, ProductCreatedEvent> productFactory() {
+        return new DefaultKafkaProducerFactory<>(producerConfigs());
+    }
+
+    @Bean
+    KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate() {
+        return new KafkaTemplate<>(productFactory());
+    }
+
+
 }

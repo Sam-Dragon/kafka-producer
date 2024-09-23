@@ -67,7 +67,7 @@
 - Each partition is assigned to a broker when topic is created/modified
 
 
-# Disadavantages of stopping producers/consumers abruptly
+# Disadvantages of stopping producers/consumers abruptly
 - Avoid losing messages
 - Avoid errors
 - To gracefully shutdown kafka services is by calling kafka-server-stop.bat or kafka-server-stop.sh script

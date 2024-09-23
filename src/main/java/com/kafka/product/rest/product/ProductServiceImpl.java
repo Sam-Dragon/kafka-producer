@@ -5,8 +5,6 @@ import com.kafka.product.entity.Product;
 import com.kafka.product.model.ProductRequest;
 import com.kafka.product.model.pubsub.ProductCreatedEvent;
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -20,14 +18,17 @@ import java.util.concurrent.TimeUnit;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ModelMapper mapper;
+    private final ModelMapper mapper;
 
     @Autowired
-    private KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate;
-
-    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+    private final KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate;
 
     List<Product> products = new ArrayList<>();
+
+    public ProductServiceImpl(ModelMapper mapper, KafkaTemplate<String, ProductCreatedEvent> kafkaTemplate) {
+        this.mapper = mapper;
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     @Override
     public String createAsynchronously(ProductRequest request) {
@@ -44,6 +45,8 @@ public class ProductServiceImpl implements ProductService {
             }
             System.out.println("Producer Response :: {}" + result.getRecordMetadata());
         });
+
+        System.out.println("Returning Product Id :: " + productId);
 
         var product = mapper.map(event, Product.class);
         products.add(product);
@@ -62,13 +65,17 @@ public class ProductServiceImpl implements ProductService {
         var future = kafkaTemplate.send(KafkaConstants.CREATE_PRODUCT_TOPIC, productId, event);
         future.whenComplete((response, exception) -> {
             if (exception != null) {
-                LOGGER.error("Producer Exception :: {}", exception.getMessage());
+                System.out.println("Producer Exception :: " + exception.getMessage());
             }
-            LOGGER.info("Producer Response :: {}", response.getRecordMetadata());
+            System.out.println("Producer Response :: " + response.getRecordMetadata());
         });
+
+        System.out.println("Called Join Method");
 
         // TO make it synchronous operation
         future.join();
+
+        System.out.println("Returning Product Id :: " + productId);
 
         var product = mapper.map(event, Product.class);
         products.add(product);
@@ -92,7 +99,8 @@ public class ProductServiceImpl implements ProductService {
         System.out.println("Producer Response > Topic :: " + response.getRecordMetadata().topic());
         System.out.println("Producer Response > Offset :: " + response.getRecordMetadata().offset());
 
-        LOGGER.info("Product Response :: {}", response);
+        System.out.println("Product Response :: " + response);
+        System.out.println("Returning Product Id :: " + productId);
 
         var product = mapper.map(event, Product.class);
         products.add(product);

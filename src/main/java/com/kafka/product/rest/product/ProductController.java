@@ -19,16 +19,14 @@ public class ProductController {
     public ResponseEntity<String> createAsynchronously(@RequestBody ProductRequest request) {
         var productId = service.createAsynchronously(request);
 
-        return ResponseEntity.ok()
-                .body(productId);
+        return ResponseEntity.ok().body(productId);
     }
 
     @PostMapping("/synchronously/future-join")
     public ResponseEntity<String> createSynchronouslyUsingFutureJoin(@RequestBody ProductRequest request) {
         var productId = service.createSynchronouslyUsingFutureJoin(request);
 
-        return ResponseEntity.ok()
-                .body(productId);
+        return ResponseEntity.ok().body(productId);
     }
 
     @PostMapping("/synchronously/get")
@@ -37,8 +35,7 @@ public class ProductController {
         try {
             productId = service.createSynchronouslyUsingGet(request);
 
-            return ResponseEntity.ok()
-                    .body(productId);
+            return ResponseEntity.ok().body(productId);
         } catch (Exception e) {
             System.out.println("Error :: " + e);
             return ResponseEntity.internalServerError()
@@ -50,7 +47,6 @@ public class ProductController {
     public ResponseEntity<List<Product>> findAll() {
         var products = service.findAll();
 
-        return ResponseEntity.ok()
-                .body(products);
+        return ResponseEntity.ok().body(products);
     }
 }
