@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.kafka.producer</groupId>
-	<artifactId>kafka-producer</artifactId>
+	<artifactId>kafka</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>kafka-producer</name>
 	<description>Demo project for Kafka Producer</description>
