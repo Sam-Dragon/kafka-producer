@@ -48,12 +48,17 @@
 - To enable auto creation of topic [auto.create.topics.enable=true]
 - It can produce message in synchronous/asynchronous communication style
 
-    > Acknoledgement
-    - It is way to make kafka system more reliable & durable by configuring number of brokers to sent acknowledgement
+    > Acknowledgement
+    - It is way to make kafka system more reliable & durable by configuring number of brokers to sent acknowledgement. It is **configurable property**
     - producer.acks = all, makes our system highly reliable but performance goes down. Ex: bank transactions
     - producer.acks = 0, makes our system less reliable but performance is good. Ex: Real time feed weather, stock
     - producer.acks = 1 **[Not Recommended]**, makes our system less reliable but performance is good. Ex: internal system calls
     - producer.acks = all with min.insync.replicas = 2 **[Highly recommended]**, makes system better and gives good performance
+
+    > Retries
+    - It is a process of retrying the messages sent to the broker. It can happen if broker is not available, network issue etc. It is **configurable property**
+    - It is applicable only for retriable errors
+    - producer.retries = 10, retries for 10 times
 
 > Broker
 - It can be physical computer or virtual machine which runs kafka processes.
