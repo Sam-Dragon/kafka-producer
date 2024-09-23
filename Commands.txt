@@ -9,6 +9,11 @@ zookeeper-server-start.bat ../../config/zookeeper.properties
 > Start
 kafka-server-start.bat ../../config/server.properties
 
+- Multiple Servers
+kafka-server-start.bat ../../config/server-1.properties
+kafka-server-start.bat ../../config/server-2.properties
+kafka-server-start.bat ../../config/server-3.properties
+
 > Stop
 - To enable manual shutdown [controlled.shutdown.enable=true]
 kafka-server-stop.bat
