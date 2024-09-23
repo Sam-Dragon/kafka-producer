@@ -48,6 +48,13 @@
 - To enable auto creation of topic [auto.create.topics.enable=true]
 - It can produce message in synchronous/asynchronous communication style
 
+    > Acknoledgement
+    - It is way to make kafka system more reliable & durable by configuring number of brokers to sent acknowledgement
+    - producer.acks = all, makes our system highly reliable but performance goes down. Ex: bank transactions
+    - producer.acks = 0, makes our system less reliable but performance is good. Ex: Real time feed weather, stock
+    - producer.acks = 1 **[Not Recommended]**, makes our system less reliable but performance is good. Ex: internal system calls
+    - producer.acks = all with min.insync.replicas = 2 **[Highly recommended]**, makes system better and gives good performance
+
 > Broker
 - It can be physical computer or virtual machine which runs kafka processes.
 - Server which accepts events from producer & stores in its hard disk
@@ -65,7 +72,6 @@
 - leader replicates the data into follower servers
 - Every kafka broker can be leader and follower at same time.
 - Each partition is assigned to a broker when topic is created/modified
-
 
 # Disadavantages of stopping producers/consumers abruptly
 - Avoid losing messages
