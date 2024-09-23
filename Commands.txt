@@ -9,6 +9,11 @@ zookeeper-server-start.bat ../../config/zookeeper.properties
 > Start
 kafka-server-start.bat ../../config/server.properties
 
+- Multiple Servers
+kafka-server-start.bat ../../config/server-1.properties
+kafka-server-start.bat ../../config/server-2.properties
+kafka-server-start.bat ../../config/server-3.properties
+
 > Stop
 - To enable manual shutdown [controlled.shutdown.enable=true]
 kafka-server-stop.bat
@@ -31,6 +36,8 @@ kafka-topics.bat --describe --topic <TOPIC-NAME> --bootstrap-server localhost:90
 # Delete topics
 - To enable manual delete [delete.topic.enable=true]
 kafka-topics.bat --delete --topic <TOPIC-NAME> --bootstrap-server localhost:9092
+
+Note: Delete all the logs in case exception on server startup happens
 
 # Produce a message
 kafka-console-producer.bat --broker-list localhost:9092 --topic <TOPIC-NAME>
