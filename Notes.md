@@ -59,6 +59,21 @@
     - It is a process of retrying the messages sent to the broker. It can happen if broker is not available, network issue etc. It is **configurable property**
     - It is applicable only for retriable errors
     - producer.retries = 10, retries for 10 times
+    - producer.retries works better in combination with **producer.retries.backoff.ms** for better performance
+ 
+    > Delivery Timeout
+    - max time for producer to wait for entire send time [Send Request + Acknoledgement + Retry]
+    - It is replacement for **kafka retires**
+    - producer.properties.delivery.timeout.ms = 120000 [2 minutes]
+    - delivery.timeout.ms >= linger.ms + request.timeout.ms
+
+    > Linger
+    - Mainly used for buffering messages before sending them. Basically, compresses the large messages for increasing throughput
+    - producer.properties.linger.ms = 0
+
+    > Request Timeout
+    - max time for producer can wait for response after single request
+    - producer.properties.request.timeout.ms = 30000
 
 > Broker
 - It can be physical computer or virtual machine which runs kafka processes.
@@ -90,7 +105,3 @@
 Note: 
 - Queue is similiar to kafka topic but difference is event is not deleted once consumed. it stays on memory till cleaning process in not scheduled 
 - Partitions can be increased even after configured but it cannot be decreased
-
-# Kafka Properties
-- Delivery Timeout = max time for producer to wait for entire send time [Send Request + Acknoledgement + Retry] - It is replacement for kafka retires
-- Request Timeout = max time for producer can wait after single request
