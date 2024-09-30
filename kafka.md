@@ -5,7 +5,7 @@
 - It provides **loose coupling** between client & server applications
 - Kafka is used for **asynchronous** communication
 - Majorly used for distributing messages across multiple other microservices
-- Follows **even-driven architecture**
+- Follows **event-driven architecture**
 - It is publisher-subscriber model [pub-sub model]
 - It is useful in scaling
 
@@ -90,7 +90,11 @@
 > Consumer
 - The one who consumes an event from broker(s) produced by producer
 - It can consume latest message or all messages from beginning
-- Messages in single partition is read in order but order b/w partitions is not guaranteed 
+- Messages in single partition is read in order but order b/w partitions is not guaranteed
+
+> Deserialization problem
+- If producer produces data in some format whereas consumer expects in different format data
+- To solve this, we must use "error handling deserializer class" & specify value deserializer type
 
 # Architecture
 - Generally, we need more than broker. It works on leader-follower server. 
