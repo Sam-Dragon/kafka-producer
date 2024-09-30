@@ -6,7 +6,7 @@
 - Kafka is used for **asynchronous** communication
 - Majorly used for distributing messages across multiple other microservices
 - Follows **even-driven architecture**
-- It is publisher-subscriber model [pubsub model]
+- It is publisher-subscriber model [pub-sub model]
 - It is useful in scaling
 
 # Components
@@ -20,7 +20,7 @@
   > Ordering an event
   - In case of message key is absent, the data is load balanced & it can be stored in **any of the partition**. order is not followed and may raise conflicts
   - In case of message key is provided, the data is always stored in '**single partition**'
-  - We can send mutiple messages from a file
+  - We can send multiple messages from a file
 
 > Message vs Event
 - Message is an envelope which contains an event in it which can be different formats [Json, String, Avro or Null]
@@ -36,15 +36,15 @@
 > Topics
 - It is under broker which stores the events produced to a specific topic and save it in partition
 - It is nothing but list of partitions in which event is stored
-- It is append only, new event is always added at the end 
-- Its default retention time is 7 days but it is configurable
+- It is appended only, new event is always added at the end 
+- Its default retention time is 7 days, but it is configurable
 - It provides support for parallel processing and load balancing
-- partitions can be increased in topic but doesnt decrease 
+- partitions can be increased in topic but doesn't decrease 
 
 > Producer
 - The one who publishes/produces the event to broker
 - It serializes the data to be sent over the network
-- It must specify topic name where it wants to produces the message to
+- It must specify topic name where it wants to produce the message to
 - To enable auto creation of topic [auto.create.topics.enable=true]
 - It can produce message in synchronous/asynchronous communication style
 
@@ -62,7 +62,7 @@
     - producer.retries works better in combination with **producer.retries.backoff.ms** for better performance
  
     > Delivery Timeout
-    - max time for producer to wait for entire send time [Send Request + Acknoledgement + Retry]
+    - max time for producer to wait for entire send time [Send Request + Acknowledgement + Retry]
     - It is replacement for **kafka retires**
     - producer.properties.delivery.timeout.ms = 120000 [2 minutes]
     - delivery.timeout.ms >= linger.ms + request.timeout.ms
@@ -88,26 +88,23 @@
 - It follows leader-follower mechanism, there is no single broker who will always be leader. Each broker can be leader/follower
 
 > Consumer
-- The one who consumes an event from broker
-- It can consume new message or all messages from beginning
+- The one who consumes an event from broker(s) produced by producer
+- It can consume latest message or all messages from beginning
+- Messages in single partition is read in order but order b/w partitions is not guaranteed 
 
 # Architecture
-- Generally, we need more than broker. It works on leader-follwer server. 
+- Generally, we need more than broker. It works on leader-follower server. 
 - In case leader goes down, then one of the follower becomes leader and continue to work
 - leader replicates the data into follower servers
 - Every kafka broker can be leader and follower at same time.
 - Each partition is assigned to a broker when topic is created/modified
 
 
-# Disadvantages of stopping producers/consumers abruptly
+> Disadvantages of stopping producers/consumers abruptly
 - Avoid losing messages
 - Avoid errors
 - To gracefully shutdown kafka services is by calling kafka-server-stop.bat or kafka-server-stop.sh script
 
-# Idempotent
-- Producer:
-  - To prevent duplicate messages in the logs on failure of network and retry
-
-Note: 
+<br>Note : 
 - Queue is similar to kafka topic but difference is event is not deleted once consumed. it stays on memory till cleaning process in not scheduled 
-- Partitions can be increased even after configured but it cannot be decreased
+- Partitions can be increased even after configured, but it cannot be decreased
