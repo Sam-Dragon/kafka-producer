@@ -95,7 +95,7 @@
   > Deserialization problem
   - If producer produces data in some format whereas consumer expects in different format data
   - To solve this, we must use "error handling deserializer class" & specify value deserializer type
-
+  
   > Dead Letter Topic [DLT]
   - It records all the messages which have failed due to deserialization issues & can be viewed later for re-processing
   - This topic must end with extension [.DLT]
