@@ -92,9 +92,14 @@
 - It can consume latest message or all messages from beginning
 - Messages in single partition is read in order but order b/w partitions is not guaranteed
 
-> Deserialization problem
-- If producer produces data in some format whereas consumer expects in different format data
-- To solve this, we must use "error handling deserializer class" & specify value deserializer type
+  > Deserialization problem
+  - If producer produces data in some format whereas consumer expects in different format data
+  - To solve this, we must use "error handling deserializer class" & specify value deserializer type
+
+  > Dead Letter Topic [DLT]
+  - It records all the messages which have failed due to deserialization issues & can be viewed later for re-processing
+  - This topic must end with extension [.DLT]
+  - It requires all the producer configuration as kafka template wraps the messages & is useful in capturing deserialization errors directly
 
 # Architecture
 - Generally, we need more than broker. It works on leader-follower server. 
