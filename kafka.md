@@ -97,10 +97,10 @@
     - To solve this, we must use "error handling deserializer class" & specify value deserializer type <br><br>
  
   > Retries
-  - It is a process of retrying the messages sent to the broker. It can happen if broker is not available, network issue etc
-  - It is applicable only for retryable errors
-  - we need to create new "exception classes" for retryable exception & add new properties for retries & interval 
-  - consumer.retries = 10, consumer.interval.in.seconds = 5 <br><br>
+    - It is a process of retrying the messages sent to the broker. It can happen if broker is not available, network issue etc
+    - It is applicable only for retryable errors
+    - we need to create new "exception classes" for retryable exception & add new properties for retries & interval 
+    - consumer.retries = 10, consumer.interval.in.seconds = 5 <br><br>
 
   > **Dead Letter Topic [DLT]**
     - It records all the messages which have failed due to deserialization issues [producers and consumers] & can be viewed later for re-processing
