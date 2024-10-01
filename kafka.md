@@ -97,7 +97,7 @@
     - To solve this, we must use "error handling deserializer class" & specify value deserializer type
 
   > Dead Letter Topic [DLT]
-    - It records all the messages which have failed due to deserialization issues & can be viewed later for re-processing
+    - It records all the messages which have failed due to deserialization issues [producers and consumers] & can be viewed later for re-processing
     - This topic must end with extension [.DLT]
     - It requires all the producer configuration as kafka template wraps the messages & is useful in capturing deserialization errors directly
 
