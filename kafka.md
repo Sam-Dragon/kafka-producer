@@ -125,7 +125,7 @@
       viewed later for re-processing
     - This topic must end with extension [.DLT]
     - It requires all the producer configuration as kafka template wraps the messages & is useful in capturing
-      deserialization errors directly
+      deserialization errors directly<br><br>
 
   > Consumer Groups
     - They were introduced to '**scaling**' up the application by creating multiple instances of same application
