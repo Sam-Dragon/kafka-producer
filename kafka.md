@@ -95,11 +95,18 @@
   > Deserialization problem
     - If producer produces data in some format whereas consumer expects in different format data
     - To solve this, we must use "error handling deserializer class" & specify value deserializer type
+ 
+  > Retries
+  - It is a process of retrying the messages sent to the broker. It can happen if broker is not available, network issue etc
+  - It is applicable only for retryable errors
+  - we need to create new "exception classes" for retryable exception & add new properties for retries & interval 
+  - consumer.retries = 10, consumer.interval.in.seconds = 5
 
-  > Dead Letter Topic [DLT]
+  > **Dead Letter Topic [DLT]**
     - It records all the messages which have failed due to deserialization issues [producers and consumers] & can be viewed later for re-processing
     - This topic must end with extension [.DLT]
     - It requires all the producer configuration as kafka template wraps the messages & is useful in capturing deserialization errors directly
+
 
 # Architecture
 - Generally, we need more than broker. It works on leader-follower server. 
@@ -107,7 +114,6 @@
 - leader replicates the data into follower servers
 - Every kafka broker can be leader and follower at same time.
 - Each partition is assigned to a broker when topic is created/modified
-
 
 > Disadvantages of stopping producers/consumers abruptly
 - Avoid losing messages
