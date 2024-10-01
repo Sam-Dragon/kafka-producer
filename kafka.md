@@ -69,7 +69,7 @@
   > Retries
     - It is a process of retrying the messages sent to the broker. It can happen if broker is not available, network
       issue etc. It is **configurable property**
-    - It is applicable only for retriable errors
+    - It is applicable only for retryable errors
     - producer.retries = 10, retries for 10 times
     - producer.retries works better in combination with **producer.retries.backoff.ms** for better performance<br><br>
 
@@ -107,7 +107,7 @@
 
 - The one who consumes an event from broker(s) produced by producer
 - It can consume latest message or all messages from beginning
-- Messages in single partition is read in order but order b/w partitions is not guaranteed <br><br>
+- Messages in single partition is read in order but order b/w partitions is not guaranteed<br><br>
 
   > Deserialization problem
     - If producer produces data in some format whereas consumer expects in different format data
@@ -127,9 +127,17 @@
     - It requires all the producer configuration as kafka template wraps the messages & is useful in capturing
       deserialization errors directly
 
+  > Consumer Groups
+    - They were introduced to '**scaling**' up the application by creating multiple instances of same application
+    - Groups ensures new message is consumed by **single instance only**
+    - spring.kafka.consumer.group-id = <UNIQUE GROUP ID> for group
+    - One consumer cannot read from two separate partitions in the group 
+    - Similarly, two consumers cannot read from same partition in the group 
+    - Kafka takes care of re-balancing the partitions either when consumer is added / removed in consumer group
+
 # Architecture
 
-- Generally, we need more than broker. It works on leader-follower server.
+- Generally, we need multiple brokers. It works on leader-follower server.
 - In case leader goes down, then one of the follower becomes leader and continue to work
 - leader replicates the data into follower servers
 - Every kafka broker can be leader and follower at same time.
