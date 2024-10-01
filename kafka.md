@@ -53,27 +53,27 @@
     - producer.acks = all, makes our system highly reliable but performance goes down. Ex: bank transactions
     - producer.acks = 0, makes our system less reliable but performance is good. Ex: Real time feed weather, stock
     - producer.acks = 1 **[Not Recommended]**, makes our system less reliable but performance is good. Ex: internal system calls
-    - producer.acks = all with min.insync.replicas = 2 **[Highly recommended]**, makes system better and gives good performance
+    - producer.acks = all with min.insync.replicas = 2 **[Highly recommended]**, makes system better and gives good performance<br><br>
 
     > Retries
     - It is a process of retrying the messages sent to the broker. It can happen if broker is not available, network issue etc. It is **configurable property**
     - It is applicable only for retriable errors
     - producer.retries = 10, retries for 10 times
-    - producer.retries works better in combination with **producer.retries.backoff.ms** for better performance
+    - producer.retries works better in combination with **producer.retries.backoff.ms** for better performance<br><br>
  
     > Delivery Timeout
     - max time for producer to wait for entire send time [Send Request + Acknowledgement + Retry]
     - It is replacement for **kafka retires**
     - producer.properties.delivery.timeout.ms = 120000 [2 minutes]
-    - delivery.timeout.ms >= linger.ms + request.timeout.ms
+    - delivery.timeout.ms >= linger.ms + request.timeout.ms<br><br>
 
     > Linger
     - Mainly used for buffering messages before sending them. Basically, compresses the large messages for increasing throughput
-    - producer.properties.linger.ms = 0
+    - producer.properties.linger.ms = 0<br><br>
 
     > Request Timeout
     - max time for producer can wait for response after single request
-    - producer.properties.request.timeout.ms = 30000
+    - producer.properties.request.timeout.ms = 30000<br><br>
  
     > Idempotent
     - It is useful in preventing duplicate messages in the presence of failures or retries. It is required in banking applications
@@ -90,11 +90,11 @@
 > Consumer
 - The one who consumes an event from broker(s) produced by producer
 - It can consume latest message or all messages from beginning
-- Messages in single partition is read in order but order b/w partitions is not guaranteed
+- Messages in single partition is read in order but order b/w partitions is not guaranteed <br><br>
 
   > Deserialization problem
     - If producer produces data in some format whereas consumer expects in different format data
-    - To solve this, we must use "error handling deserializer class" & specify value deserializer type
+    - To solve this, we must use "error handling deserializer class" & specify value deserializer type <br><br>
  
   > Retries
   - It is a process of retrying the messages sent to the broker. It can happen if broker is not available, network issue etc
