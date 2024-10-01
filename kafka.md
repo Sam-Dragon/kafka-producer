@@ -118,7 +118,7 @@
       issue etc
     - It is applicable only for retryable errors
     - we need to create new "exception classes" for retryable exception & add new properties for retries & interval
-    - consumer.retries = 10, consumer.interval.in.seconds = 5 <br><br>
+    - consumer.retries = 10, consumer.interval.in.seconds = 5 <br>
 
   > **Dead Letter Topic [DLT]**
     - It records all the messages which have failed due to deserialization issues [producers and consumers] & can be
