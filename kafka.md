@@ -138,8 +138,8 @@
  
   > Idempotent 
     - Process same message multiple times without any side effects or data inconsistencies
-    - We will need to use database to make sure transactions are not duplicated 
-    - Identifier for each transaction will be message [unique] key in message header which will avoid duplication 
+    - We will need to use database to make sure transactions are not duplicated based on unique key
+    - Identifier for each transaction will be message [unique] key in message header which will avoid duplication
 
 # Architecture
 
