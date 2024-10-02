@@ -4,6 +4,7 @@ import com.kafka.product.constants.KafkaConstants;
 import com.kafka.product.entity.Product;
 import com.kafka.product.model.ProductRequest;
 import com.kafka.product.model.pubsub.ProductCreatedEvent;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -37,8 +38,17 @@ public class ProductServiceImpl implements ProductService {
         var event = mapper.map(request, ProductCreatedEvent.class);
         event.setId(productId);
 
+        // Producer Record along with headers having unique key
+        ProducerRecord<String, ProductCreatedEvent> record = new ProducerRecord<>(KafkaConstants.CREATE_PRODUCT_TOPIC, productId, event);
+        var messageId = UUID.randomUUID().toString().getBytes();
+
+        // Hardcoded the messaged id for testing duplicate message id
+        // messageId = "12345".getBytes();
+
+        record.headers().add("messageId", messageId);
+
         // Produce kafka event
-        var future = kafkaTemplate.send(KafkaConstants.CREATE_PRODUCT_TOPIC, productId, event);
+        var future = kafkaTemplate.send(record);
         future.whenComplete((result, exception) -> {
             if (exception != null) {
                 System.out.println("Producer Exception :: {}" + exception.getMessage());
