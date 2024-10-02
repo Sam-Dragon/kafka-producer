@@ -107,7 +107,8 @@
 
 - The one who consumes an event from broker(s) produced by producer
 - It can consume latest message or all messages from beginning
-- Messages in single partition is read in order but order b/w partitions is not guaranteed<br><br>
+- Messages in single partition is read in order but order b/w partitions is not guaranteed
+- It can listen to multiple messages/event from same topic <br><br>
 
   > Deserialization problem
     - If producer produces data in some format whereas consumer expects in different format data
@@ -134,6 +135,11 @@
     - One consumer cannot read from two separate partitions in the group 
     - Similarly, two consumers cannot read from same partition in the group 
     - Kafka takes care of re-balancing the partitions either when consumer is added / removed in consumer group
+ 
+  > Idempotent 
+    - Process same message multiple times without any side effects or data inconsistencies
+    - We will need to use database to make sure transactions are not duplicated 
+    - Identifier for each transaction will be message [unique] key in message header which will avoid duplication 
 
 # Architecture
 
