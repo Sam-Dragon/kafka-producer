@@ -10,6 +10,20 @@
 - It is publisher-subscriber model [pub-sub model]
 - It is useful in scaling
 
+# Architecture
+
+- Generally, we need multiple brokers. It works on leader-follower server.
+- In case leader goes down, then one of the follower becomes leader and continue to work
+- leader replicates the data into follower servers
+- Every kafka broker can be leader and follower at same time.
+- Each partition is assigned to a broker when topic is created/modified
+
+> Disadvantages of stopping producers/consumers abruptly
+
+- Avoid losing messages
+- Avoid errors
+- To gracefully shutdown kafka services is by calling kafka-server-stop.bat or kafka-server-stop.sh script
+
 # Components
 
 > Event
@@ -141,19 +155,10 @@
     - We will need to use database to make sure transactions are not duplicated based on unique key
     - Identifier for each transaction will be message [unique] key in message header which will avoid duplication
 
-# Architecture
-
-- Generally, we need multiple brokers. It works on leader-follower server.
-- In case leader goes down, then one of the follower becomes leader and continue to work
-- leader replicates the data into follower servers
-- Every kafka broker can be leader and follower at same time.
-- Each partition is assigned to a broker when topic is created/modified
-
-> Disadvantages of stopping producers/consumers abruptly
-
-- Avoid losing messages
-- Avoid errors
-- To gracefully shutdown kafka services is by calling kafka-server-stop.bat or kafka-server-stop.sh script
+# Kafka Transactions
+- There definition is same as database transactions
+- It will contain messages which are marked as **'Uncommitted'** on failure
+- Consumers will only show **'Read Committed'** messages only 
 
 <br>Note :
 
