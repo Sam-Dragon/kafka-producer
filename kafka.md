@@ -159,11 +159,32 @@
 - There definition is same as database transactions
 - It will contain messages which are marked as **'Uncommitted'** on failure
 - Consumers will only show **'Read Committed'** messages only
-- It doesn't manage remote service transaction and database transactions
+- It doesn't manage **database transactions**
+
+> Producer Config
 - spring.kafka.producer.transaction-id-prefix=product-${random.value}
+- Add this property to KafkaConfig file
 - logging.level.org.springframework.kafka.transactions=DEBUG
 - Introduce new method for creating KafkaTranasctionalManager in Kafka Configuration file
 - Annotate the method with **'@Transactional(value="kafkaTransactionManager", rollbackFor={NotRetryableException.class, ConnectException.class}, noRollbackFor={SpecificException.class})'** for method which needs to work like single transaction unit
+
+> Consumer Config
+- spring.kafka.consumer.isolation-level=READ_COMMITTED
+- Add this property to KafkaConfig file 
+
+# Kafka Local Transactions
+- It is different when compared to **'@Transactional'** of spring, as it rollbacks for any failure in method
+- local transactions only deals with kafka related & it doesn't need **'@Transactional'** to be specified
+- with local transactions we can still provide other process which are not related to transaction
+- It can be specified with kafkaTemplate
+  - kafkaTemplate.executeInTransaction(transaction -> {
+        transaction.send("withdrwalTopic", withdrawalEvent); <br>
+        transaction.send("depositTopic", withdrawalEvent);<br>
+        return true;<br>
+   })<br>
+- 
+# Database Transactions
+- It saves the details to database
 
 <br>Note :
 
