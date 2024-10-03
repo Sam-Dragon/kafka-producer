@@ -160,6 +160,10 @@
 - It will contain messages which are marked as **'Uncommitted'** on failure
 - Consumers will only show **'Read Committed'** messages only
 - It doesn't manage remote service transaction and database transactions
+- spring.kafka.producer.transaction-id-prefix=product-${random.value}
+- logging.level.org.springframework.kafka.transactions=DEBUG
+- Introduce new method for creating KafkaTranasctionalManager in Kafka Configuration file
+- Annotate the method with **'@Transactional'** for method which needs to work like single transaction unit
 
 <br>Note :
 
