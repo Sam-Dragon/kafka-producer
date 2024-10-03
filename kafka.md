@@ -158,7 +158,8 @@
 # Kafka Transactions
 - There definition is same as database transactions
 - It will contain messages which are marked as **'Uncommitted'** on failure
-- Consumers will only show **'Read Committed'** messages only 
+- Consumers will only show **'Read Committed'** messages only
+- It doesn't manage remote service transaction and database transactions
 
 <br>Note :
 
