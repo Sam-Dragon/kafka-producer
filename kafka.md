@@ -163,7 +163,7 @@
 - spring.kafka.producer.transaction-id-prefix=product-${random.value}
 - logging.level.org.springframework.kafka.transactions=DEBUG
 - Introduce new method for creating KafkaTranasctionalManager in Kafka Configuration file
-- Annotate the method with **'@Transactional'** for method which needs to work like single transaction unit
+- Annotate the method with **'@Transactional(value="kafkaTransactionManager")'** for method which needs to work like single transaction unit
 
 <br>Note :
 
