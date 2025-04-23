@@ -16,4 +16,9 @@
     - **key/value pair message** [RECOMMENDED]:
       - key & value serializer [It can be defined in **application properties**] <br>
         Property: "spring.kafka.producer.key-serializer" <br>
-        Property: "spring.kafka.producer.value-serializer" <br>
+        Property: "spring.kafka.producer.value-serializer" <br><br>
+
+  > Acknowledgement
+    - To make system fault tolerant [It can be defined in **application properties**] <br>
+    - It will depend on minimum insync replicas
+      Property: "spring.kafka.producer.acks" <br>
