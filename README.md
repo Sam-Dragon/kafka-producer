@@ -37,3 +37,11 @@
       - It is maximum waiting time of the messages which are sent <br>
         Property: "spring.kafka.producer.properties.request.timeout.ms" <br>        
         spring.kafka.producer.properties.delivery.timeout.ms = spring.kafka.producer.properties.linger.ms + spring.kafka.producer.properties.request.timeout.ms
+
+> Idempotent
+  - **[RECOMMEDED]**
+  - scenarios where events are very critical like banking systems. send duplicate messages is nightmare. To avoid this idempotency was introduced
+  - In latest version, this property is default to TRUE [Just check in config is set]
+    Property: "spring.kafka.producer.properties.enable.idempotence" <br>
+
+  - It can be disabled if acks!=all, retries!=default value and max.in.fligh.connection !=5
