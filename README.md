@@ -40,8 +40,13 @@
 
 > Idempotent Producer
   - **[RECOMMEDED]**
-  - scenarios where events are very critical like banking systems. send duplicate messages is nightmare. To avoid this idempotency was introduced
-  - In latest version, this property is default to TRUE [Just check in config is set]
+  - scenarios where events are very critical like banking systems. send duplicate messages is nightmare. To avoid this idempotency was introduced 
+  - In latest version, this property is default to TRUE [Just check in config is set] <br>
     Property: "spring.kafka.producer.properties.enable.idempotence" <br>
 
   - It can be disabled if acks!=all, retries!=default value and max.in.fligh.connection !=5
+
+> Transactions
+- **[RECOMMENDED]**
+-  scenarios where events are very critical like banking systems. send duplicate messages is nightmare. To avoid this transactions are introduced <br>
+   Property: "spring.kafka.producer.transaction-id-prefix" <br>
