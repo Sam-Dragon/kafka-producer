@@ -162,7 +162,7 @@
 - It doesn't manage **database transactions**
 
 > Producer Config
-- spring.kafka.producer.transaction-id-prefix=product-${random.value}
+- enable kafka transactions property - **spring.kafka.producer.transaction-id-prefix=product-${random.value}**
 - Add this property to KafkaConfig file
 - logging.level.org.springframework.kafka.transactions=DEBUG
 - Introduce new method for creating KafkaTranasctionalManager in Kafka Configuration file
