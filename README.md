@@ -20,7 +20,7 @@
   > Acknowledgement
     - To make system fault tolerant [It can be defined in **application properties**] <br>
     - It will depend on minimum insync replicas <br>
-      Property: "spring.kafka.producer.acks" <br>
+      Property: "spring.kafka.producer.acks" <br><br>
 
   > Retries
     - **[NOT RECOMMEDED]**
@@ -38,7 +38,7 @@
         Property: "spring.kafka.producer.properties.request.timeout.ms" <br>        
         spring.kafka.producer.properties.delivery.timeout.ms = spring.kafka.producer.properties.linger.ms + spring.kafka.producer.properties.request.timeout.ms
 
-> Idempotent
+> Idempotent Producer
   - **[RECOMMEDED]**
   - scenarios where events are very critical like banking systems. send duplicate messages is nightmare. To avoid this idempotency was introduced
   - In latest version, this property is default to TRUE [Just check in config is set]
