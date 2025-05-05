@@ -49,5 +49,5 @@
 > Transactions
 - **[RECOMMENDED]**
 -  scenarios where events are very critical like banking systems. send duplicate messages is nightmare. To avoid this transactions are introduced <br>
-- It can be enable with the below property. It accepts string prefix
+- It can be enable with the below property. It accepts string prefix <br>
    Property: "spring.kafka.producer.transaction-id-prefix" <br>
